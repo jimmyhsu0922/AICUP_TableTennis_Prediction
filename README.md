@@ -19,10 +19,10 @@
 請確保您的執行環境具備 Python 3.10+ 以及支援 CUDA 的硬體加速：
 
 ```bash
-# 🚀 安裝所需的核心深度學習與數據處理套件
+# 安裝所需的核心深度學習與數據處理套件
 pip install torch pandas numpy scikit-learn transformers
 
-# 基於時序資料之桌球戰術與結果預測競賽 🚀
+# 基於時序資料之桌球戰術與結果預測競賽
 
 
 
@@ -31,7 +31,7 @@ pip install torch pandas numpy scikit-learn transformers
 
 ---
 
-## 📁 專案目錄結構
+## 專案目錄結構
 
 ```text
 project_root/
@@ -52,6 +52,7 @@ project_root/
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
 
+
 [ 9項類別特徵輸入 ] (性別、持拍手、力量、旋轉、球種、擊球動作、擊球位置、擊球落點、擊球拍數)
         │
         ▼
@@ -68,10 +69,10 @@ project_root/
         │
         ▼
 [ Transformer 編碼器 ] ➔ 多頭注意力機制 (8 Heads, Dropout 0.3)
-   ⚠️ [下三角因果遮罩] ➔ 動態將 t+1 拍後之權重歸零，嚴格杜絕「偷看未來」資料洩漏！
+    [下三角因果遮罩] ➔ 動態將 t+1 拍後之權重歸零，嚴格杜絕「偷看未來」資料洩漏！
         │
         ▼
 [ 特徵解耦多任務輸出頭 (Multi-Task Decoupling Heads) ]
-        ├── 🎯 動作分類頭 (act_head) ➔ 預測下一拍動作 (Balanced Focal Loss)
-        ├── 📍 落點分類頭 (pt_head)  ➔ 預測下一拍落點 (Balanced Focal Loss)
-        └── 🏆 勝負預測頭 (rly_head)  ➔ 特徵 Mean Pooling ➔ 預測回合勝負 (BCE Loss)
+        ├──  動作分類頭 (act_head) ➔ 預測下一拍動作 (Balanced Focal Loss)
+        ├──  落點分類頭 (pt_head)  ➔ 預測下一拍落點 (Balanced Focal Loss)
+        └──  勝負預測頭 (rly_head)  ➔ 特徵 Mean Pooling ➔ 預測回合勝負 (BCE Loss)
