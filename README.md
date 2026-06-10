@@ -43,28 +43,3 @@ project_root/
 │
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
-
-
-[ 9項類別特徵輸入 ] (性別、持拍手、力量、旋轉、球種、擊球動作、擊球位置、擊球落點、擊球拍數)
-        │
-        ▼
-[ 特徵嵌入層 (Embedding) ] ➔ 9組獨立 Embedding Matrix (各32維)
-        │
-        ▼
-[ 特徵拼接 (Concat) ] ➔ 融合成 288 維之複合語意時序向量
-        │
-        ▼
-[ 單向 LSTM 網路 ] ➔ 隱藏層 256 維，利用門控機制平滑物理軌跡動態雜訊
-        │
-        ▼
-[ 位置編碼 (Positional) ] ➔ 注入絕對時序位置資訊
-        │
-        ▼
-[ Transformer 編碼器 ] ➔ 多頭注意力機制 (8 Heads, Dropout 0.3)
-    [下三角因果遮罩] ➔ 動態將 t+1 拍後之權重歸零，嚴格杜絕「偷看未來」資料洩漏！
-        │
-        ▼
-[ 特徵解耦多任務輸出頭 (Multi-Task Decoupling Heads) ]
-        ├──  動作分類頭 (act_head) ➔ 預測下一拍動作 (Balanced Focal Loss)
-        ├──  落點分類頭 (pt_head)  ➔ 預測下一拍落點 (Balanced Focal Loss)
-        └──  勝負預測頭 (rly_head)  ➔ 特徵 Mean Pooling ➔ 預測回合勝負 (BCE Loss)
