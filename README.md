@@ -33,7 +33,6 @@ pip install torch pandas numpy scikit-learn transformers
 
 ## 專案目錄結構
 
-```text
 project_root/
 │
 ├── data/                  # 競賽原始資料集
