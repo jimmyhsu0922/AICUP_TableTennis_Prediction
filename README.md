@@ -21,14 +21,6 @@
 ```bash
 # 安裝所需的核心深度學習與數據處理套件
 pip install torch pandas numpy scikit-learn transformers
-
-# 基於時序資料之桌球戰術與結果預測競賽
-
-
-
-本專案為 **AICUP 2026 基於時序資料之桌球戰術與結果預測競賽** 的官方開源程式碼庫。
-團隊核心創新在於針對桌球/羽球賽事的「強時序依賴性」與「長尾分佈」，設計了一套結合 **單向 LSTM** 與 **Transformer 編碼器** 的雙層混合多任務時序專家系統（MultiTaskLSTMTransformer），在盲測集上展現出極高的強健性與泛化能力。
-
 ---
 
 ## 專案目錄結構
