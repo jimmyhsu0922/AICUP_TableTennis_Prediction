@@ -5,7 +5,8 @@
 ![AICUP](https://img.shields.io/badge/AICUP-2026-red.svg?style=flat-square)
 # AI CUP 2026 春季賽 基於時序資料之桌球戰術與結果預測競賽 
 TEAM: TEAM_10669
-Private Leaderboard: 0.3765799 (Rank 3)
+Private Leaderboard: 0.3765799 (Rank 17)
+
 這是我們在 AICUP 競賽中的官方開源程式碼庫。本專案建構於 Google Colab T4 GPU 環境下，結合了單向 LSTM 與 Transformer 編碼器架構進行多任務（動作、落點、勝負）之時序預測。
 
 ## 專案目錄結構
