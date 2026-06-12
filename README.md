@@ -43,3 +43,15 @@ project_root/
 │
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
+
+# 模型核心超參數配置表
+
+以下為模型的核心超參數配置詳細內容：
+
+| 超參數名稱 (Hyperparameter) | 配置數值 (Value) |
+| :--- | :--- |
+| 嵌入維度 (Embedding Dimension) | 32 |
+| 隱藏層維度 (Hidden Dimension) | 256 |
+| 注意力標頭數 (Transformer Heads) | 8 |
+| 隨機失活率 (Dropout Rate) | 0.3 |
+| 批次大小 (Batch Size) | 64 |
