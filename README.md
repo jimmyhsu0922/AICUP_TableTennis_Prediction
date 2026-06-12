@@ -43,6 +43,7 @@ project_root/
 │
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
+```
 
 ## ⚙️ 模型核心超參數配置 (Core Hyperparameters)
 
