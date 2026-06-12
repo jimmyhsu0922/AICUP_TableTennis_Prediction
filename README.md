@@ -44,11 +44,6 @@ project_root/
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
 
-```markdown
-# 模型核心超參數配置 (Model Core Hyperparameters Configuration)
-
-本項目詳細記錄了深度學習模型的核心超參數配置。此配置專為平衡模型表達能力與泛化性能而設計。
-
 ## 🚀 超參數配置表 (Hyperparameters Table)
 
 | 超參數名稱 (Hyperparameter) | 配置數值 (Value) | 功能說明 (Description) |
