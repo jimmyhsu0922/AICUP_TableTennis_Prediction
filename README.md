@@ -45,7 +45,9 @@ project_root/
     └── submission_hybrid_v4_2.csv
 ```
 
-## ⚙️ 模型核心超參數配置 (Core Hyperparameters)
+## 模型核心超參數配置 (Core Hyperparameters)
+
+> `src/FinalCode.py`所使用的模型參數
 
 <table>
   <thead>
