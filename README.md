@@ -44,19 +44,44 @@ project_root/
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
 
-## 🚀 超參數配置表 (Hyperparameters Table)
+## ⚙️ 模型核心超參數配置 (Core Hyperparameters)
 
-| 超參數名稱 (Hyperparameter) | 配置數值 (Value) | 功能說明 (Description) |
-| :--- | :---: | :--- |
-| **嵌入維度 (Embedding Dimension)** | `32` | 負責將輸入標記（Tokens）映射至低維連續向量空間。 |
-| **隱藏層維度 (Hidden Dimension)** | `256` | 前饋神經網路（Feed-Forward Network）與循環/注意力層的內部特徵維度。 |
-| **注意力標頭數 (Transformer Heads)** | `8` | 多頭注意力機制（Multi-Head Attention）並行捕捉不同子空間特徵的數量。 |
-| **隨機失活率 (Dropout Rate)** | `0.3` | 用於防止模型過擬合（Overfitting）的常規正則化比例。 |
-| **批次大小 (Batch Size)** | `64` | 每次梯度更新時，同時輸入模型進行前向傳播與反向傳播的樣本數量。 |
-
-## 📊 配置可視化 (Configuration Visualization)
-
-為了方便在 Markdown 閱讀，以下使用 **Mermaid** 圖表呈現模型核心架構的維度配置與數據流向（支援 GitHub 原生渲染）：
+<table>
+  <thead>
+    <tr style="background-color: #f8f9fa;">
+      <th align="left" width="45%">超參數名稱 (Hyperparameter)</th>
+      <th align="left" width="15%">配置數值 (Value)</th>
+      <th align="left" width="40%">說明 (Description)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>嵌入維度 (Embedding Dimension)</b></td>
+      <td><code>32</code></td>
+      <td>將輸入標記（Tokens）映射至低維連續向量空間。</td>
+    </tr>
+    <tr>
+      <td><b>隱藏層維度 (Hidden Dimension)</b></td>
+      <td><code>256</code></td>
+      <td>前饋神經網路與注意力層的內部特徵維度。</td>
+    </tr>
+    <tr>
+      <td><b>注意力標頭數 (Transformer Heads)</b></td>
+      <td><code>8</code></td>
+      <td>多頭注意力機制並行捕捉不同子空間特徵的數量。</td>
+    </tr>
+    <tr>
+      <td><b>隨機失活率 (Dropout Rate)</b></td>
+      <td><code>0.3</code></td>
+      <td>用於防止模型過擬合（Overfitting）的正則化比例。</td>
+    </tr>
+    <tr>
+      <td><b>批次大小 (Batch Size)</b></td>
+      <td><code>64</code></td>
+      <td>每次梯度更新時同時輸入模型的樣本數量。</td>
+    </tr>
+  </tbody>
+</table>
 
 ```mermaid
 graph TD
