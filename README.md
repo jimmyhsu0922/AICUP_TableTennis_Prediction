@@ -88,14 +88,3 @@ project_root/
     </tr>
   </tbody>
 </table>
-
-```mermaid
-graph TD
-    Input([輸入數據]) -->|Batch Size: 64| Embed[嵌入層 Embedding]
-    Embed -->|Embedding Dim: 32| MHA[多頭注意力機制 Multi-Head Attention]
-    MHA -->|8 Heads| Hidden[隱藏層/前饋網路 Hidden Layer]
-    Hidden -->|Hidden Dim: 256\nDropout: 0.3| Output([特徵輸出])
-    
-    style Embed fill:#f9f,stroke:#333,stroke-width:2px
-    style Hidden fill:#bbf,stroke:#333,stroke-width:2px
-    style MHA fill:#bfb,stroke:#333,stroke-width:2px
