@@ -21,9 +21,9 @@
 ```bash
 # 安裝所需的核心深度學習與數據處理套件
 pip install torch pandas numpy scikit-learn transformers
+```
 
----
-
+```
 ## 專案目錄結構
 
 project_root/
