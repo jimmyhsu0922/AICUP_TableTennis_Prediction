@@ -3,16 +3,29 @@
 ![Transformers](https://img.shields.io/badge/Transformers-4.30-orange.svg?style=flat-square&logo=huggingface)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)
 ![AICUP](https://img.shields.io/badge/AICUP-2026-red.svg?style=flat-square)
-
-# 基於時序資料之桌球戰術與結果預測競賽
+# 基於時序資料之桌球戰術與結果預測競賽 
 
 這是我們在 AICUP 競賽中的官方開源程式碼庫。本專案建構於 Google Colab T4 GPU 環境下，結合了單向 LSTM 與 Transformer 編碼器架構進行多任務（動作、落點、勝負）之時序預測。
 
+## 專案目錄結構
+
+* `src/`：包含基礎 Baseline 模型以及本團隊最終採用的混合時序多任務模型 (`FinalCode.py`)。
+* `data/`：競賽原始訓練集與測試集數據。
+* `checkpoints/`：5 折交叉驗證中所儲存之最佳模型權重檔 (`.pt` / `.pth`)。
+* `submissions/`：模型推論後輸出之最終預測結果 CSV 檔案。
+
+## 環境配置與安裝說明
+
+請確保您的執行環境具備 Python 3.10+ 以及支援 CUDA 的硬體加速：
+
+```bash
+# 安裝所需的核心深度學習與數據處理套件
+pip install torch pandas numpy scikit-learn transformers
+
 ---
 
-## 📂 專案目錄結構
+## 專案目錄結構
 
-```text
 project_root/
 │
 ├── data/                  # 競賽原始資料集
@@ -30,9 +43,23 @@ project_root/
 │
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
-🛠️ 環境配置與安裝說明請確保您的執行環境具備 Python 3.10+ 以及支援 CUDA 的硬體加速：Bash# 安裝所需的核心深度學習與數據處理套件
-pip install torch pandas numpy scikit-learn transformers
-🚀 超參數配置表 (Hyperparameters Table)超參數名稱 (Hyperparameter)配置數值 (Value)功能說明 (Description)嵌入維度 (Embedding Dimension)32負責將輸入標記（Tokens）映射至低維連續向量空間。隱藏層維度 (Hidden Dimension)256前饋神經網路（Feed-Forward Network）與循環/注意力層的內部特徵維度。注意力標頭數 (Transformer Heads)8多頭注意力機制（Multi-Head Attention）並行捕捉不同子空間特徵的數量。隨機失活率 (Dropout Rate)0.3用於防止模型過擬合（Overfitting）的常規正則化比例。批次大小 (Batch Size)64每次梯度更新時，同時輸入模型進行前向傳播與反向傳播的樣本數量。📊 配置可視化 (Configuration Visualization)為了方便在 Markdown 閱讀，以下使用 Mermaid 圖表呈現模型核心架構的維度配置與數據流向（支援 GitHub 原生渲染）：程式碼片段graph TD
+
+## 🚀 超參數配置表 (Hyperparameters Table)
+
+| 超參數名稱 (Hyperparameter) | 配置數值 (Value) | 功能說明 (Description) |
+| :--- | :---: | :--- |
+| **嵌入維度 (Embedding Dimension)** | `32` | 負責將輸入標記（Tokens）映射至低維連續向量空間。 |
+| **隱藏層維度 (Hidden Dimension)** | `256` | 前饋神經網路（Feed-Forward Network）與循環/注意力層的內部特徵維度。 |
+| **注意力標頭數 (Transformer Heads)** | `8` | 多頭注意力機制（Multi-Head Attention）並行捕捉不同子空間特徵的數量。 |
+| **隨機失活率 (Dropout Rate)** | `0.3` | 用於防止模型過擬合（Overfitting）的常規正則化比例。 |
+| **批次大小 (Batch Size)** | `64` | 每次梯度更新時，同時輸入模型進行前向傳播與反向傳播的樣本數量。 |
+
+## 📊 配置可視化 (Configuration Visualization)
+
+為了方便在 Markdown 閱讀，以下使用 **Mermaid** 圖表呈現模型核心架構的維度配置與數據流向（支援 GitHub 原生渲染）：
+
+```mermaid
+graph TD
     Input([輸入數據]) -->|Batch Size: 64| Embed[嵌入層 Embedding]
     Embed -->|Embedding Dim: 32| MHA[多頭注意力機制 Multi-Head Attention]
     MHA -->|8 Heads| Hidden[隱藏層/前饋網路 Hidden Layer]
@@ -41,4 +68,3 @@ pip install torch pandas numpy scikit-learn transformers
     style Embed fill:#f9f,stroke:#333,stroke-width:2px
     style Hidden fill:#bbf,stroke:#333,stroke-width:2px
     style MHA fill:#bfb,stroke:#333,stroke-width:2px
-此文件用於記錄與維護項目之實驗參數。
