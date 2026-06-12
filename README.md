@@ -44,14 +44,32 @@ project_root/
 └── submissions/           # 模型推論後輸出之最終預測結果 CSV 檔案
     └── submission_hybrid_v4_2.csv
 
-# 模型核心超參數配置表
+```markdown
+# 模型核心超參數配置 (Model Core Hyperparameters Configuration)
 
-以下為模型的核心超參數配置詳細內容：
+本項目詳細記錄了深度學習模型的核心超參數配置。此配置專為平衡模型表達能力與泛化性能而設計。
 
-| 超參數名稱 (Hyperparameter) | 配置數值 (Value) |
-| :--- | :--- |
-| 嵌入維度 (Embedding Dimension) | 32 |
-| 隱藏層維度 (Hidden Dimension) | 256 |
-| 注意力標頭數 (Transformer Heads) | 8 |
-| 隨機失活率 (Dropout Rate) | 0.3 |
-| 批次大小 (Batch Size) | 64 |
+## 🚀 超參數配置表 (Hyperparameters Table)
+
+| 超參數名稱 (Hyperparameter) | 配置數值 (Value) | 功能說明 (Description) |
+| :--- | :---: | :--- |
+| **嵌入維度 (Embedding Dimension)** | `32` | 負責將輸入標記（Tokens）映射至低維連續向量空間。 |
+| **隱藏層維度 (Hidden Dimension)** | `256` | 前饋神經網路（Feed-Forward Network）與循環/注意力層的內部特徵維度。 |
+| **注意力標頭數 (Transformer Heads)** | `8` | 多頭注意力機制（Multi-Head Attention）並行捕捉不同子空間特徵的數量。 |
+| **隨機失活率 (Dropout Rate)** | `0.3` | 用於防止模型過擬合（Overfitting）的常規正則化比例。 |
+| **批次大小 (Batch Size)** | `64` | 每次梯度更新時，同時輸入模型進行前向傳播與反向傳播的樣本數量。 |
+
+## 📊 配置可視化 (Configuration Visualization)
+
+為了方便在 Markdown 閱讀，以下使用 **Mermaid** 圖表呈現模型核心架構的維度配置與數據流向（支援 GitHub 原生渲染）：
+
+```mermaid
+graph TD
+    Input([輸入數據]) -->|Batch Size: 64| Embed[嵌入層 Embedding]
+    Embed -->|Embedding Dim: 32| MHA[多頭注意力機制 Multi-Head Attention]
+    MHA -->|8 Heads| Hidden[隱藏層/前饋網路 Hidden Layer]
+    Hidden -->|Hidden Dim: 256\nDropout: 0.3| Output([特徵輸出])
+    
+    style Embed fill:#f9f,stroke:#333,stroke-width:2px
+    style Hidden fill:#bbf,stroke:#333,stroke-width:2px
+    style MHA fill:#bfb,stroke:#333,stroke-width:2px
